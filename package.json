@@ -1,0 +1,23 @@
+{
+  "name": "hexagon-hive-generator",
+  "version": "1.0.0",
+  "description": "hexagon svg generator",
+  "main": "index.js",
+  "type" : "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sachin-source/hexagon-hive-generator.git"
+  },
+  "keywords": [
+    "hexagon",
+    "hive",
+    "svg",
+    "generate",
+    "hex"
+  ],
+  "author": "sachin",
+  "license": "ISC"
+}
