@@ -295,6 +295,12 @@ const getHexCenterY = (hexStructure, attempt, row, test, reportDimensions) => {
     return ycenter;
 }
 
+/**
+ * 
+ * @param {[number]} scores 
+ * @abstract Function takes array of scores and generates SVG paths for the hexagon hive
+ * @returns JSON Obj : includes row distribution, hexagon dimentions, svg paths, colors and view box
+ */
 const generateHexagonCluster = (scores = []) => {
     const rowDistribution = getRowDistribution(scores.length);
 
