@@ -16,8 +16,14 @@
     "hive",
     "svg",
     "generate",
-    "hex"
+    "hex",
+    "create"
   ],
   "author": "sachin",
-  "license": "ISC"
+  "license": "ISC",
+  "release-it": {
+    "github": {
+      "release": true
+    }
+  }
 }
