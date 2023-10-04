@@ -13,13 +13,14 @@ const getRowDistribution =  (numberOfHex) => {
     }
 }
 
-const calcDimensions = (numberOfHex, rowDistribution) => {
+const calcDimensions = (numberOfHex, rowDistribution, config={}) => {
+    const { beginX=0, beginY=0 } = config;
 
     const a4width = 840;
 
     let reportDimensions = {
-        marginX: 0,
-        marginY: 0,
+        marginX: beginX,
+        marginY: beginY,
         marginMidX: 0,
         marginMidY: 0,
         hexRadius: 29, // 25
@@ -37,7 +38,7 @@ const calcDimensions = (numberOfHex, rowDistribution) => {
         let remainingX = a4width - widthOfHive;
 
         reportDimensions.hiveWidth = widthOfHive;
-        reportDimensions.marginX = remainingX / 2;
+        reportDimensions.marginX =  beginX || remainingX / 2;
 
         const numberOfRows = rowDistribution.length
 
@@ -301,10 +302,11 @@ const getHexCenterY = (hexStructure, attempt, row, test, reportDimensions) => {
  * @abstract Function takes array of scores and generates SVG paths for the hexagon hive
  * @returns JSON Obj : includes row distribution, hexagon dimentions, svg paths, colors and view box
  */
-const generateHexagonCluster = (scores = []) => {
+const generateHexagonCluster = (scores = [], config={}) => {
+    const { beginX, beginY } = config;
     const rowDistribution = getRowDistribution(scores.length);
 
-    const reportDimensionsPost = calcDimensions(scores.length, rowDistribution)
+    const reportDimensionsPost = calcDimensions(scores.length, rowDistribution, {beginX, beginY})
     const hexStructurePost = initHexStructure(rowDistribution, reportDimensionsPost.marginX, reportDimensionsPost.marginY, reportDimensionsPost.hexWidth, reportDimensionsPost.hexRadius)
     const headerCoordinatesPost = [];
     for (let i = 0; i < 1; i++) {
